@@ -42,21 +42,39 @@ def selection_sort(list):
 """
 # print(selection_sort(read_data("numbers.csv")))
 
-def selection_sort(list):
+def selection_sort(list, direction="ascending"):
     for i in range(len(list)):
         min_idx = i
         for num_idx in range(i + 1, len(list)):
-            if list[min_idx] > list[num_idx]:
-                min_idx = num_idx
-        list[i], list[min_idx] = list[min_idx], list[i]
+            if direction == "ascending":
+                if list[min_idx] > list[num_idx]:
+                    min_idx = num_idx
+            elif direction == "descending":
+                if list[min_idx] < list[num_idx]:
+                    min_idx = num_idx
 
-    print(list)
+        list[i], list[min_idx] = list[min_idx], list[i]
+        # list = list.pop(min_idx)
+        # list.insert(i, list)
+
+    return list
+
+def bubble_sort(list):
+    for i in range(len(list)):
+        for j in range(len(list) - i - 1):
+            if list[j] > list[j+1]:
+                list[j], list[j+1] = list[j+1], list[j]
+
+    return list
+
+def insertion
 
 
 def main():
     numbers = read_data("numbers.csv")
     sorted_series = selection_sort(numbers["series_1"])
-    pass
+    bubble = bubble_sort(numbers["series_1"])
+    print(bubble)
 
 
 if __name__ == '__main__':
